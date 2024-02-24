@@ -13,8 +13,8 @@ in {
   # User Variables
   username = "${username}";
   hostname = "${hostname}";
-  gitUsername = "Tyler Kelley";
-  gitEmail = "tylerzanekelley@gmail.com";
+  gitUsername = "Stanley Renfrew";
+  gitEmail = "github@silentijsje.com";
   theme = "catppuccin-mocha";
   slickbar = if waybarStyle == "slickbar" then true else false;
   slickbar-num = if waybarStyle == "slickbar-num" then true else false;
@@ -34,23 +34,15 @@ in {
   clock24h = false;
   theLocale = "en_US.UTF-8";
   theKBDLayout = "us";
-  theSecondKBDLayout = "de";
   theKBDVariant = "";
   theLCVariables = "en_US.UTF-8";
-  theTimezone = "America/Chicago";
+  theTimezone = "Europe/Amsterdam";
   theShell = "bash"; # Possible options: bash, zsh
   theKernel = "default"; # Possible options: default, latest, lqx, xanmod, zen
   sdl-videodriver = "x11"; # Either x11 or wayland ONLY. Games might require x11 set here
   # For Hybrid Systems intel-nvidia
   # Should Be Used As gpuType
   cpuType = "intel";
-  gpuType = "amd";
-
-  # Nvidia Hybrid Devices
-  # ONLY NEEDED FOR HYBRID
-  # SYSTEMS! 
-  intel-bus-id = "PCI:0:2:0";
-  nvidia-bus-id = "PCI:14:0:0";
 
   # Enable / Setup NFS
   nfs = false;
