@@ -78,8 +78,8 @@ sed -i "/^\s*gpuType[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$gpuType\"/" ./op
 echo "Generating The Hardware Configuration"
 nixos-generate-config --show-hardware-config > hardware.nix
 
-echo "-----"
+# echo "-----"
 
-echo "Now Going To Build ZaneyOS, 🤞"
-NIX_CONFIG="experimental-features = nix-command flakes" 
-sudo nixos-rebuild switch --flake .#$hostName
+# echo "Now Going To Build ZaneyOS, 🤞"
+# NIX_CONFIG="experimental-features = nix-command flakes" 
+# sudo nixos-rebuild switch --flake .#$hostName
