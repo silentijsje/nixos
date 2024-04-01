@@ -21,7 +21,7 @@ echo "-----"
 
 cd
 echo "Cloning & Entering Repository"
-git clone https://github.com/silentijsje/nixos.git
+git pull https://github.com/silentijsje/nixos.git
 cd nixos
 
 # echo "-----"
