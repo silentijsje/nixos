@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 if [ -n "$(cat /etc/os-release | grep -i nixos)" ]; then
     echo "This is NixOS."
@@ -19,10 +19,9 @@ fi
 
 echo "-----"
 
-cd
+pushd ~/
 echo "Cloning & Entering Repository"
 git pull https://github.com/silentijsje/nixos.git
-cd nixos
 
 # echo "-----"
 
@@ -32,4 +31,4 @@ cd nixos
 echo "-----"
 
 echo "Now Going To Build Nixos, 🤞"
-sudo nixos-rebuild switch
+sudo nixos-rebuild switch -I nixos-config=configuration.nix
