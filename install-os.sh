@@ -24,13 +24,13 @@ echo "Cloning & Entering Repository"
 git clone https://github.com/silentijsje/nixos.git
 cd nixos
 
+# echo "-----"
+
+# echo "Generating The Hardware Configuration"
+# nixos-generate-config --show-hardware-config > hardware.nix
+
 echo "-----"
 
-echo "Generating The Hardware Configuration"
-nixos-generate-config --show-hardware-config > hardware.nix
-
-echo "-----"
-
-echo "Now Going To Build Nisos, 🤞"
+echo "Now Going To Build Nixos, 🤞"
 NIX_CONFIG="experimental-features = nix-command flakes" 
 sudo nixos-rebuild switch --flake .#$hostName
