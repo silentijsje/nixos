@@ -15,7 +15,7 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nixos-test"; # Define your hostname.
+  networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -52,9 +52,12 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
+    layout = "gb";
     xkbVariant = "";
   };
+
+  # Configure console keymap
+  console.keyMap = "uk";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -80,20 +83,19 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.stanley = {
+  users.users.silentijsje = {
     isNormalUser = true;
     description = "Stanley";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-      git
-      #  thunderbird
+    #  thunderbird
     ];
   };
 
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "stanley";
+  services.xserver.displayManager.autoLogin.user = "silentijsje";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -105,9 +107,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
+  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -121,7 +122,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -141,4 +142,5 @@
   services.flatpak.enable = true;
   #virtualisation.qemu.guestAgent.enable = true;
   services.qemuGuest.enable = true;
+
 }

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+#https://github.com/charles37/flake2/blob/main/install-zaneyos.sh
+
 if [ -n "$(cat /etc/os-release | grep -i nixos)" ]; then
     echo "This is NixOS."
     echo "Continuing with the ZaneyOS installation."
