@@ -21,7 +21,7 @@ fi
 
 echo "-----"
 
-pushd ~/
+pushd ~/nixos
 echo "Cloning & Entering Repository"
 git pull https://github.com/silentijsje/nixos.git
 
