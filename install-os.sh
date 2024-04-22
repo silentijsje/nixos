@@ -23,6 +23,7 @@ echo "-----"
 
 pushd ~/nixos
 echo "Cloning & Entering Repository"
+git reset --hard
 git pull https://github.com/silentijsje/nixos.git
 
 # echo "-----"
