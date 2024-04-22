@@ -32,6 +32,6 @@ git pull https://github.com/silentijsje/nixos.git
 
 echo "-----"
 
-pushd ~/.dotfiles
+pushd ~/nixos
 echo "Now Going To Build Nixos, 🤞"
 sudo nixos-rebuild switch -I nixos-config=configuration.nix
