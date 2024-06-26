@@ -21,12 +21,11 @@ fi
 
 echo "-----"
 
-pushd ~/nixos
+cd ~/nixos
 echo "Cloning & Entering Repository"
 git reset --hard
 git pull https://github.com/silentijsje/nixos.git
 chmod +x ~/nixos/install-os.sh
-chmod +x ~/install-os.sh
 
 # echo "-----"
 
