@@ -56,6 +56,13 @@
     packages = with pkgs; [];
   };
 
+users.users."user".openssh.authorizedKeys.keys = [
+  # "ssh-rsa AAAAB3Nz....6OWM= user" # content of authorized_keys file
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPC6PrQT7ULeTRj+4WPabG4tFeRoS8Po9KeThRyjTjnP prod-code02"
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHSLCbslrptciBVTmU8iaBDldsZ7QCPdtmAIiFNO+rqb Stanley-PC-Putty"
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBXqJaNm9Qbk9Y76a7+UN9AV4MxasmXc2w+QgOkbCt1b stanley-laptop"
+];
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
