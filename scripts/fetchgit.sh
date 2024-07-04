@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Define an array of directories
 directories=(
