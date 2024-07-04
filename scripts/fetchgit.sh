@@ -28,11 +28,11 @@ for dir in "${directories[@]}"; do
     elif [ "$LOCAL" = "$BASE" ]; then
         BUILD_VERSION=$(git rev-list HEAD)
         echo "$(TZ='Europe/Amsterdam' date +%FT%T%z): Changes detected, deploying new version $BUILD_VERSION"
-        ./scripts/deploy.sh
+        ./deploy.sh
     elif [ "$REMOTE" = "$BASE" ]; then
         echo "$(TZ='Europe/Amsterdam' date +%FT%T%z): Local changes detected, stashing..."
         git stash
-        ./scripts/deploy.sh
+        ./deploy.sh
     else
         echo "$(TZ='Europe/Amsterdam' date +%FT%T%z): Diverged"
     fi
