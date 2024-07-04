@@ -2,7 +2,7 @@
 
 # Define an array of directories
 directories=(
-    "../"
+    "~/nixos"
 )
 
 # Iterate over each directory
