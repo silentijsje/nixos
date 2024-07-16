@@ -74,18 +74,20 @@ users.users.stanley.openssh.authorizedKeys.keys = [
   environment.systemPackages = with pkgs; [
     wget
     git
+    bash
+    jellyfin
+    radarr
+    sonarr
+    plex
     docker
     docker-compose
-    bash
-  ];
-
-  environment.systemPackages = [
-    pkgs.jellyfin
-    pkgs.radarr
-    pkgs.sonarr
-    pkgs.plex
-    pkgs.podman
-  ];
+  ];  
+  # List services that you want to enable:
+  services.openssh.enable = true;
+  services.flatpak.enable = true;
+  services.radarr.enable = true;
+  services.sonarr.enable = true;
+  services.plex.enable = true;
 
   virtualisation.docker.enable = true;
   virtualisation.docker.rootless = {
@@ -101,13 +103,7 @@ users.users.stanley.openssh.authorizedKeys.keys = [
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
 
-  # Enable services
-  services.openssh.enable = true;
-
-  # Enable flatpak
-  services.flatpak.enable = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 80 443 22 ];
@@ -125,9 +121,14 @@ users.users.stanley.openssh.authorizedKeys.keys = [
 
   # Automatic Garbage Collection
   nix.gc = {
-                  automatic = true;
-                  dates = "weekly";
-                  options = "--delete-older-than 7d";
+              automatic = true;
+              dates = "weekly";
+              options = "--delete-older-than 7d";
           };
+
+  # # Auto system update
+  # system.autoUpgrade = {
+  #       enable = true;
+  # };
 
 }
