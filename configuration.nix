@@ -81,6 +81,7 @@ users.users.stanley.openssh.authorizedKeys.keys = [
     plex
     docker
     docker-compose
+    grub2
   ];  
   # List services that you want to enable:
   services.openssh.enable = true;
