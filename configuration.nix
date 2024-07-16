@@ -15,7 +15,7 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "prod-nix-media02"; # Define your hostname.
+  networking.hostName = "prod-nix-01"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -58,13 +58,12 @@
   };
 
 users.users.stanley.openssh.authorizedKeys.keys = [
-  # "ssh-rsa AAAAB3Nz....6OWM= user" # content of authorized_keys file
-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPC6PrQT7ULeTRj+4WPabG4tFeRoS8Po9KeThRyjTjnP prod-code02"
-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMNcIBLH4sFk4uKmgzfYc0kZSU2nRKkazeJh2rvlDoVe prod-storage01"
-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHSLCbslrptciBVTmU8iaBDldsZ7QCPdtmAIiFNO+rqb Stanley-PC-Putty"
-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII3FiqbWCc8wOpHi4Zz3l1DtbYcOsi2O/3Jjqouf9U2T stanley-PC-WSL"
-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBXqJaNm9Qbk9Y76a7+UN9AV4MxasmXc2w+QgOkbCt1b stanley-laptop"
-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOzPjpdAVf3VYapk9YY0rGbKuGkEVQYI8S6OG6yQD0ou Stanley-Laptop-WSL"
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPC6PrQT7ULeTRj+4WPabG4tFeRoS8Po9KeThRyjTjnP prod-code02"
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMNcIBLH4sFk4uKmgzfYc0kZSU2nRKkazeJh2rvlDoVe prod-storage01"
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHSLCbslrptciBVTmU8iaBDldsZ7QCPdtmAIiFNO+rqb Stanley-PC-Putty"
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII3FiqbWCc8wOpHi4Zz3l1DtbYcOsi2O/3Jjqouf9U2T stanley-PC-WSL"
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBXqJaNm9Qbk9Y76a7+UN9AV4MxasmXc2w+QgOkbCt1b stanley-laptop"
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOzPjpdAVf3VYapk9YY0rGbKuGkEVQYI8S6OG6yQD0ou Stanley-Laptop-WSL"
 ];
 
   # Allow unfree packages
@@ -78,6 +77,14 @@ users.users.stanley.openssh.authorizedKeys.keys = [
     docker
     docker-compose
     bash
+  ];
+
+  environment.systemPackages = [
+    pkgs.jellyfin
+    pkgs.radarr
+    pkgs.sonarr
+    pkgs.plex
+    pkgs.podman
   ];
 
   virtualisation.docker.enable = true;
@@ -96,8 +103,11 @@ users.users.stanley.openssh.authorizedKeys.keys = [
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
+  # Enable services
   services.openssh.enable = true;
+
+  # Enable flatpak
+  services.flatpak.enable = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 80 443 22 ];
@@ -112,5 +122,12 @@ users.users.stanley.openssh.authorizedKeys.keys = [
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+
+  # Automatic Garbage Collection
+  nix.gc = {
+                  automatic = true;
+                  dates = "weekly";
+                  options = "--delete-older-than 7d";
+          };
 
 }
