@@ -10,15 +10,16 @@
       /home/stanley/nixos/hardware.nix
 
       ### ZFS import
-      /home/stanley/nixos/zfs.nix
+      # /home/stanley/nixos/zfs.nix
     ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
-  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-  boot.kernelParams = [ "nohibernate" ];
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
+  networking.hostId = "e3f52b69";
 
   networking.hostName = "prod-nix-01"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
