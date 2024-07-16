@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ~/nixos/hardware.nix
+      /home/stanley/nixos/hardware.nix
     ];
 
   # Bootloader.
