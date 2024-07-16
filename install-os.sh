@@ -3,8 +3,7 @@
 #https://github.com/charles37/flake2/blob/main/install-zaneyos.sh
 
 if [ -n "$(cat /etc/os-release | grep -i nixos)" ]; then
-    echo "This is NixOS."
-    echo "Continuing with the ZaneyOS installation."
+    echo "Verified this is NixOS."
     echo "-----"
 else
     echo "This is not NixOS or the distribution information is not available."
@@ -16,24 +15,26 @@ if command -v git &> /dev/null; then
 else
     echo "Git is not installed. Please install Git and try again."
     echo "Example: nix-shell -p git"
-    exit 1
+    exit
 fi
 
 echo "-----"
 
-cd ~/nixos
-echo "Cloning & Entering Repository"
-git reset --hard
-git pull https://github.com/silentijsje/nixos.git
-chmod +x ~/nixos/install-os.sh
-
-# echo "-----"
-
-# echo "Generating The Hardware Configuration"
-# nixos-generate-config --show-hardware-config > hardware.nix
+echo "Ensure In Home Directory"
+cd
 
 echo "-----"
 
-pushd ~/nixos
+echo "Cloning & Entering Repository"
+git pull https://github.com/silentijsje/nixos.git
+cd nixos
+
+echo "-----"
+
+echo "Generating The Hardware Configuration"
+nixos-generate-config --show-hardware-config > hardware.nix
+
+echo "-----"
+
 echo "Now Going To Build Nixos, 🤞"
 sudo nixos-rebuild switch -I nixos-config=configuration.nix
