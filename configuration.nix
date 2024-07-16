@@ -15,7 +15,7 @@
 
   # Bootloader.
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/nvme0n1";
+  boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.forceImportRoot = false;
@@ -91,9 +91,9 @@ users.users.stanley.openssh.authorizedKeys.keys = [
   # List services that you want to enable:
   services.openssh.enable = true;
   # services.flatpak.enable = true;
-  services.radarr.enable = true;
-  services.sonarr.enable = true;
-  services.plex.enable = true;
+  # services.radarr.enable = true;
+  # services.sonarr.enable = true;
+  # services.plex.enable = true;
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;
 
