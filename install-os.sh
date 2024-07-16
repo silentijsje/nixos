@@ -27,7 +27,12 @@ echo "-----"
 
 echo "Cloning & Entering Repository"
 git clone https://github.com/silentijsje/nixos.git
+
+echo "-----"
+
+echo "Entering Repository"
 cd nixos
+echo "Pulling Latest Changes"
 git pull
 
 echo "-----"
