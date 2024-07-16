@@ -8,12 +8,17 @@
   imports =
     [ # Include the results of the hardware scan.
       /home/stanley/nixos/hardware.nix
+
+      ### ZFS import
+      /home/stanley/nixos/zfs.nix
     ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  boot.kernelParams = [ "nohibernate" ];
 
   networking.hostName = "prod-nix-01"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -88,6 +93,8 @@ users.users.stanley.openssh.authorizedKeys.keys = [
   services.radarr.enable = true;
   services.sonarr.enable = true;
   services.plex.enable = true;
+  services.zfs.autoScrub.enable = true;
+  services.zfs.trim.enable = true;
 
   virtualisation.docker.enable = true;
   virtualisation.docker.rootless = {
