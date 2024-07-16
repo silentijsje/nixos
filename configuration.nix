@@ -84,7 +84,7 @@ users.users.stanley.openssh.authorizedKeys.keys = [
   ];  
   # List services that you want to enable:
   services.openssh.enable = true;
-  services.flatpak.enable = true;
+  # services.flatpak.enable = true;
   services.radarr.enable = true;
   services.sonarr.enable = true;
   services.plex.enable = true;
